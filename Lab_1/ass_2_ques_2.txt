@@ -1,0 +1,118 @@
+i) Inspecting the packets for www.iitrpr.ac.in using wireshark
+Steps :
+(a) Using the command $ping www.iitrpr.ac.in I got the IP address 172.30.8.5
+(b) Then I opened Wireshark and started capture for Wifi and visited www.iitrpr.ac.in and explored it for a minute
+(c) Then I opened Wireshark and stopped capture 
+(d) On the filter box, applied filter for IP address 172.30.8.5 (ip.addr == 172.30.8.5), it showed all the packets with 172.30.8.5 as the source or the destnation.
+(e) Applied another filter tcp.port==80, it showed all packets with HTTP and TCP protocol with IP address 172.30.8.5 as the source or the destnation.
+(f) Results showed that www.iitrpr.ac.in send 4 packets and received 4 packets with HTTP protocol.
+
+
+ii)
+TCP Sequence (seq) and Acknowledgement (ack) numbers help enable ordered reliable data transfer for TCP streams.  
+The seq number is sent by the TCP client, indicating how much data has been sent for the session. 
+The ack number is sent by the TCP server, indicating that is has received cumulated data and is ready for the next segment
+
+There are four characteristics of this packet:
+a.Frame
+b.Ethernet II
+c.Internet protocol version 4(IPv4)
+d.Transmission Control Protocol(TCP)
+
+Details of the packet:
+
+Frame 1297: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface \Device\NPF_{041BCCF6-FFA1-4F15-AFF6-906EC962D231}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{041BCCF6-FFA1-4F15-AFF6-906EC962D231})
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Jan 23, 2023 21:09:41.471076000 India Standard Time
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1674488381.471076000 seconds
+    [Time delta from previous captured frame: 0.000137000 seconds]
+    [Time delta from previous displayed frame: 0.000340000 seconds]
+    [Time since reference or first frame: 29.143004000 seconds]
+    Frame Number: 1297
+    Frame Length: 54 bytes (432 bits)
+    Capture Length: 54 bytes (432 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    [Coloring Rule Name: HTTP]
+    [Coloring Rule String: http || tcp.port == 80 || http2]
+Ethernet II, Src: IntelCor_e9:9f:94 (38:fc:98:e9:9f:94), Dst: IETF-VRRP-VRID_15 (00:00:5e:00:01:15)
+    Destination: IETF-VRRP-VRID_15 (00:00:5e:00:01:15)
+        Address: IETF-VRRP-VRID_15 (00:00:5e:00:01:15)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: IntelCor_e9:9f:94 (38:fc:98:e9:9f:94)
+        Address: IntelCor_e9:9f:94 (38:fc:98:e9:9f:94)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 172.21.7.20, Dst: 172.30.8.5
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0x24ac (9388)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 172.21.7.20
+    Destination Address: 172.30.8.5
+Transmission Control Protocol, Src Port: 55823, Dst Port: 80, Seq: 1, Ack: 1, Len: 0
+    Source Port: 55823
+    Destination Port: 80
+    [Stream index: 65]
+    [Conversation completeness: Incomplete, DATA (15)]
+    [TCP Segment Len: 0]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 3519779389
+    [Next Sequence Number: 1    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 2367500623
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······A····]
+    Window: 512
+    [Calculated window size: 131072]
+    [Window size scaling factor: 256]
+    Checksum: 0x6767 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 0.003102000 seconds]
+        [Time since previous frame in this TCP stream: 0.000340000 seconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 1294]
+        [The RTT to ACK the segment was: 0.000340000 seconds]
+        [iRTT: 0.003102000 seconds]
+
+- Brief report of the statistics
+
+(a) After applying the above filters one of the HTTP protocol packets had Seq=1 and Ack=1.
+(b) It had 172.30.8.5 as the destination and 172.21.7.20 as the source.
+(c) Source port = 55823 and Destination port = 80 for TCP
+(d) Time of arrival after capture start is 29.143004000 seconds
+
+- Filters used in the previous question :
+(a) ip.addr == 172.30.8.5
+(b) tcp.port = 80

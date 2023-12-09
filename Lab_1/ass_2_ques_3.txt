@@ -1,0 +1,12 @@
+HTTP/1.1 401 Unauthorized\r\n
+    [Expert Info (Chat/Sequence): HTTP/1.1 401 Unauthorized\r\n]
+        [HTTP/1.1 401 Unauthorized\r\n]
+        [Severity level: Chat]
+        [Group: Sequence]
+    Response Version: HTTP/1.1
+    Status Code: 401
+    [Status Code Description: Unauthorized]
+    Response Phrase: Unauthorized
+
+- If the credentials are incorrect then as a server the possible threats to the site should be taken into account and should focus on the security of the site.
+- All the info about the user will be available in the packet and then strict actions should be taken to prevent any malpractice on the site in future. 
